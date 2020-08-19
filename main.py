@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-iterations = 1000
+iterations = 10000
 change_results = np.zeros(iterations)
 stay_results = np.zeros(iterations)
 
@@ -48,15 +48,6 @@ df_stay['Mean'].plot(ax = ax, label='Did not change mind')
 plt.legend(loc='lower right')
 plt.show()
 
-
-
-# Plot the results.
-#df_change['Mean'].plot()
-#plt.title('Hello')
-#plt.xlabel('Number of guesses')
-#plt.ylabel('Average correct guesses')
-
-#plt.show()
 
 
 
