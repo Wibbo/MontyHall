@@ -1,9 +1,13 @@
 from random import randint
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import streamlit as st
+import altair as alt
 
-iterations = 10000
+st.sidebar.markdown('Application options')
+iterations = st.sidebar.selectbox(
+    'How many iterations?', [10, 100, 1000, 10000, 100000])
+
 change_results = np.zeros(iterations)
 stay_results = np.zeros(iterations)
 
@@ -40,17 +44,9 @@ df_change['Mean'] = df_change['Score'].expanding().mean()
 df_stay = pd.DataFrame(stay_results, columns=['Score'])
 df_stay['Mean'] = df_stay['Score'].expanding().mean()
 
-plt.title('The Monty Hall problem')
-plt.xlabel('Number of guesses')
-plt.ylabel('Average correct guesses')
-ax = df_change['Mean'].plot(label='Changed mind')
-df_stay['Mean'].plot(ax = ax, label='Did not change mind')
-plt.legend(loc='lower right')
-plt.show()
+st.title('The Monty Hall problem')
 
-
-
-
+st.line_chart(df_stay['Mean'])
 
 
 
